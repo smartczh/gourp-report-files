@@ -5,7 +5,8 @@
 + ETL (extract-transform-load) and data integration at scale
 + Support complex hybrid data source
 + Code free and easy configuration
-+ High modularity and clear data flow view
++ High modularity of functions and data flow view
++ Clear monitor of pipelines
 + ...
 
 ## Data-driven workflow
@@ -92,14 +93,34 @@
   + Tumbling window trigger
   + Event-based trigger
 
-> Thinking: Pull and push mode in ADF  
-Pull can be easily implemented by schedule or tumbling window trigger.  
-Push is supported partially by event-based trigger. Now it only supports blob-create or blob-deletion event. For some data sources (Application Insights, event hub), push mode can be implemented by "event-based pull from blog logs" (Note: blog writing maybe be also delayed or scheduled).
+> [!NOTE]
+> Thinking: Pull and push mode in ADF
+>+ Pull can be easily implemented by schedule or tumbling window trigger.
+>+ Push is supported partially by event-based trigger. Now it only supports blob-create or blob-deletion event. For some data sources (Application Insights, event hub), push mode can be implemented by "event-based pull from blog logs" (Note: blog writing maybe be also delayed or scheduled).
 
 + Parameters:
   + Key-value pairs configuration
   + Assigned in the run context
   + Can be passed
 
-See [an example](./Copy-Application-Insights-Data.md) (copy Application Insights data).
+See [an example](./Copy-Application-Insights-Data.md) of passing parameters (copy Application Insights data).
 
+## Using my code in ADF
+
+There are two types of activities that you can use in an Azure Data Factory pipeline:
+
++ Data movement activities to move data between supported source and sink data stores
++ Data transformation activities to transform data using compute services such as Azure HDInsight, Azure Batch, and Azure Machine Learning.
+
+When to use my code: To move data to/from a data store that Data Factory does not support, or to transform/process data in a way that isn't supported by Data Factory.
+
+ADF supports three ways ([Azure Function Activity](https://docs.microsoft.com/en-us/azure/data-factory/control-flow-azure-function-activity), [Web Activity](https://docs.microsoft.com/en-us/azure/data-factory/control-flow-web-activity), [Custom Activities](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity#feedback)) to insert your own code logic into the pipeline. All of them are wrapped as a module (an activity in the pipeline).
+
+Name | Prerequisites | Input | Output| Limitations
+--- | ------ | ----- | ----- | -----
+Azure Function Activity | a function linked service connection; HTTP triggered Azure Functions | request body | returned JObject | HTTP triggered required; times out after 230 seconds: not support passing linked services and datasets
+Web Activity | a custom REST endpoint | datasets and linked services; request body | returned JObject | not supported for URLs in a private virtual network; timeout at 1 minute
+Custom Activities | Azure Batch linked service; your .exe in the Azure Batch pool | referenceObjects and extendedProperties | stdout and stderr in blog container; writing outputs.json | Azure Batch strong associated; output size limit 2MB
+
+> [!NOTE]
+> Before using your own code logic in ADF, there may be some alternatives you might want to consider in ADF. ADF has already encapsulated a lot of commonly used logic in each module such as copy activity, filter activity, common data transformations (aggregate, join, select).
