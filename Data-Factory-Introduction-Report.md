@@ -4,7 +4,7 @@
 
 + ETL (extract-transform-load) and data integration at scale
 + Support complex hybrid data source
-+ Code free and easy configuration
++ Code free and easy, multiple configuration
 + High modularity of functions and data flow view
 + Clear monitor of pipelines
 + ...
