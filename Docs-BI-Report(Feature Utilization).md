@@ -54,7 +54,7 @@ When we need data generated from the process, which is not persistent.
 
 Name | Source Effect | Ingest Ways| Advantages | limitation |
 --- | --- | --- | --- | ---
-AI | Write AI Track code;<br>Need a schema | REST API;<br> Continuous export <br> [more info](#AI-ingest-way) | Provide rich metrics functions for data analysis (act like a small BI mid-platform based on the data in it); <br> Force the source to generate Kusto-query-enabled data forms;<br>Scalability of message consumers | not persistent (90 days); <br> pull mode of ingestion
+AI | Write AI Track code;<br>Need a schema | REST API;<br> Continuous export <br> [more info](#AI-ingest-way) | Provide rich metrics functions for data analysis (act like a small BI mid-platform based on the data in it); <br> Force the source to generate Kusto-query-enabled data forms;<br> Support [cross product queries](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data) (preview);<br>Scalability of message consumers | not persistent (90 days); <br> pull mode of ingestion
 Event Hubs | Write code to send event;<br>Need a schema | ADE build-in support;<br>Event-based Azure Function;<br>Stream Analysis;<br>ADF<br>[more info](#event-hubs-ingest-way) | Push mode;<br>Scalability of message consumers | Short message Retention (7 days);<br>No data analytical ability
 Custom libs | Import our lib and use it | Directly writing via .NET Standard SDK  |Directly writing | Incurs development overhead since the application for custom ingestion must **handle errors** and **ensure data consistency**; <br> May **affect performance**
 
@@ -68,15 +68,18 @@ AI supports [two ways](https://docs.microsoft.com/zh-cn/azure/azure-monitor/app/
   + Azure WebJobs
   + ...
 + Continuous export to blob logs, then read blog by
+  + ADE build-in support
   + ADF tools
   + Azure Function
   + ...
 
 #### Event Hubs to ADE Ways {#event-hubs-ingest-way}
 
+Two sources, from event or capturing event log.
+
 Name | Advantage | Limitation
 ----- | ---- | ----
-[Kusto build-in support](https://docs.microsoft.com/zh-cn/azure/data-explorer/ingest-data-event-hub) | Code-free; <br> Robust | Can't fetch info in **eventData.properties** (waiting supports reply now) <br> Hard to customize logic
+[Kusto build-in support](https://docs.microsoft.com/zh-cn/azure/data-explorer/ingest-data-event-hub) | Code-free; <br> Robust | Can't fetch info in **eventData.properties** <br> Hard to customize logic
 Event-based Azure Function | custom data processing capability | development overhead to **handle errors** and **ensure data consistency** (Kusto .NET sdk can help)
 ADF tools | Integration | Do not support Event Hubs directly; <br> Read data from capturing blob logs
 Stream Analysis | High integration with Event Hubs | Do not support direct output to ADE, need middle layer
