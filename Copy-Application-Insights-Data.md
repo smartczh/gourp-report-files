@@ -34,7 +34,7 @@ Application Insights use Data Explorer (Kusto) to store data (traces, metrics, e
 
 + Trigger settings: still use **Tumbling windows**, but in this case, we can customize the frequency of data moving (the highest frequency of tumbling windows support is every 15 minutes).
 
-+ Data source settings: to continuous export the data without overlapping, we can use **dynamic url** in the REST linked service or REST dataset part. The url can be consisted of Kusto query (e.g., where timestamp >= *start time* and timestamp < *end time*) and the parameters (*start time* and *end time*) passed from the tumbling windows (the parameters are passed from the trigger to the pipeline, then from the pipeline to the link service or dataset, [an example](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)).
++ Data source settings: to continuous export the data without overlapping, we can use **dynamic url** in the REST linked service or REST dataset part. The url can be consisted of Kusto query (e.g., where timestamp >= `start time` and timestamp < `end time`) and the parameters (`start time` and `end time`) passed from the tumbling windows (the parameters are passed from the trigger to the pipeline, then from the pipeline to the link service or dataset, [an example](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)).
 
 + Data output settings: mapping the source data to your target format of your output storage.
 

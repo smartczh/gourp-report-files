@@ -4,7 +4,7 @@
 
 + ETL (extract-transform-load) and data integration at scale
 + Support complex hybrid data source
-+ Code free and easy, multiple configuration
++ Code free and easy, multiple configuration (json form)
 + High modularity of functions and data flow view
 + Clear monitor of pipelines
 + ...
@@ -14,7 +14,7 @@
 ![ADF workflow](./Materials/ADF-workflow.png)
 
 1. Connect&Collect: multiple accessors
-2. Transform&Enrich: compute services such as HDInsight Hadoop, Spark, Data Lake Analytics, and Machine Learning
+2. Transform&Enrich: compute services such as HDInsight Hadoop, Spark, Data Lake Analytics, and Machine Learning, **supports custom codes** too
 3. Publish: deployment and act
 4. Monitor: built-in support, monitor via Azure Monitor, API, PowerShell, Azure Monitor logs, and health panels on the Azure portal.
 
@@ -43,7 +43,7 @@
 
 + Datasets:
   + Represent data structures
-  + Reference the data in the inputs or outputs
+  + Reference the data in the inputs or outputs of activities
 
 ``` An azure data explorer dataset example
 {
@@ -81,8 +81,8 @@
 }
 ```
 
-+ Pipeline:
-  + A logical grouping of activities that performs a unit of work
++ Pipelines and activities:
+  + A logical grouping of activities that performs a unit of task
   + Custom control flow: sequence, branching, for-each, etc.
 
 ![pipeline-portal-view](./Materials/pipeline-portal-view.png)
@@ -105,7 +105,7 @@
 
 See [an example](./Copy-Application-Insights-Data.md) of passing parameters (copy Application Insights data).
 
-## Using my code in ADF
+## Using my codes in ADF
 
 There are two types of activities that you can use in an Azure Data Factory pipeline:
 
@@ -118,9 +118,9 @@ ADF supports three ways ([Azure Function Activity](https://docs.microsoft.com/en
 
 Name | Prerequisites | Input | Output| Limitations
 --- | ------ | ----- | ----- | -----
-Azure Function Activity | a function linked service connection; HTTP triggered Azure Functions | request body | returned JObject | HTTP triggered required; times out after 230 seconds: not support passing linked services and datasets
-Web Activity | a custom REST endpoint | datasets and linked services; request body | returned JObject | not supported for URLs in a private virtual network; timeout at 1 minute
-Custom Activities | Azure Batch linked service; your .exe in the Azure Batch pool | referenceObjects and extendedProperties | stdout and stderr in blog container; writing outputs.json | Azure Batch strong associated; output size limit 2MB
+Azure Function Activity | a function linked service connection;<br> HTTP triggered Azure Functions | request body | returned JObject | HTTP triggered required;<br> times out after 230 seconds;<br> not support passing linked services and datasets
+Web Activity | a custom REST endpoint | datasets and linked services;<br> request body | returned JObject | not supported for URLs in a private virtual network;<br> timeout at 1 minute
+Custom Activities | Azure Batch linked service;<br> your .exe in the Azure Batch pool | referenceObjects (linker services and datasets) and extendedProperties | stdout and stderr in blog container;<br> writing outputs.json | Azure Batch strong associated;<br> output size limit 2MB
 
 > [!NOTE]
 > Before using your own code logic in ADF, there may be some alternatives you might want to consider in ADF. ADF has already encapsulated a lot of commonly used logic in each module such as copy activity, filter activity, common data transformations (aggregate, join, select).
