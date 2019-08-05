@@ -88,7 +88,7 @@
 ![pipeline-portal-view](./Materials/pipeline-portal-view.png)
 
 + Triggers: determines when a pipeline execution needs to be kicked off
-  + Manual run
+  + Manual run / Rest API
   + Schedule trigger
   + Tumbling window trigger
   + Event-based trigger

@@ -73,6 +73,15 @@ AI supports [two ways](https://docs.microsoft.com/zh-cn/azure/azure-monitor/app/
   + Azure Function
   + ...
 
+>[!NOTE]
+> Shortcomings of both
+> + Rest API: 
+>    + May overload the system
+>    + Has built in throttling mechanisms (e.g., data size limitation)
+> + Continuous export:
+>    + Built-in format
+>    + Hard to operate custom transformation (e.g., jsonPath to get keys)
+
 #### Event Hubs to ADE Ways {#event-hubs-ingest-way}
 
 Two sources, from event or capturing event log.
@@ -80,7 +89,7 @@ Two sources, from event or capturing event log.
 Name | Advantage | Limitation
 ----- | ---- | ----
 [Kusto build-in support](https://docs.microsoft.com/zh-cn/azure/data-explorer/ingest-data-event-hub) | Code-free; <br> Robust | Can't fetch info in **eventData.properties** <br> Hard to customize logic
-Event-based Azure Function | custom data processing capability | development overhead to **handle errors** and **ensure data consistency** (Kusto .NET sdk can help)
+Event-based Azure Function | Custom logic;<br> Automatic scale | development overhead to **handle errors** and **ensure data consistency** (Kusto .NET sdk can help)
 ADF tools | Integration | Do not support Event Hubs directly; <br> Read data from capturing blob logs
 Stream Analysis | High integration with Event Hubs | Do not support direct output to ADE, need middle layer
 
