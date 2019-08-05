@@ -151,6 +151,12 @@ BI report speed | BI from Traditional SQL => slow | BI from Kusto => fast
 
 ## Current work
 
-+ Build BI：
-+ Docfx BI:
-+ Feature Utilization:
++ [Build BI]()
+    + Use event-based Azure Function to sync data from "buildjob" Event Hub.
+    + Generate reports based on above data according existing BI.
++ [Docfx BI]((https://msit.powerbi.com/groups/me/reports/d0b3e047-a154-4c62-8481-d026c15fbdf4/ReportSection))
+    + Use ADF to sync data.
+    + Generate reports according existing docfx AI.
++ [Feature Utilization](): 
+    + 
+    + 
