@@ -148,3 +148,9 @@ BI report speed | BI from Traditional SQL => slow | BI from Kusto => fast
 + Existing works
   + Breaking (e.g., Event Hubs consumers)
   + Reusing (e.g., exposing API)
+
+## Current work
+
++ Build BI：
++ Docfx BI:
++ Feature Utilization:
