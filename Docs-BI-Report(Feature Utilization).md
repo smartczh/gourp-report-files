@@ -17,7 +17,7 @@ Azure data explorer (Kusto) is chosen now for following reasons compared to othe
 + Kusto engine compared with traditional SQL Server:
   + Column-oriented DBMS => OLAP-focused
   + All columns indexing automatically => Fast
-  + Support Structured, Semi-Sturctured and Unstructured data from => integrating data
+  + Support Structured, Semi-Sturctured (json, xml) and Unstructured data (free text) from => integrating data
 + Design for analyzing large volumes of logs or data:
   + Read, append-many
   + Delete, update almost never

@@ -21,12 +21,17 @@ Docfx log | Application Insights | Application Insights or Event Hub
 Azure Data Explorer (Kusto)
 
 + Fast and permanent
-+ Support Structured, Semi-Sturctured and Unstructured data from
-+ Design for large volumes of logs and data OLAP
++ Support Structured, Semi-Sturctured and Unstructured data (everything in one database)
++ Design for large volumes of logs and data OLAP from streaming sources(build-in support ingesting from Event Hub).
+
+### Settings
+
++ Retention period
++ Cache
 
 ## Current Workflow
 
-![workflow](./Materials/Event-Hub-to-ADE-workflow1.jpg)
+![workflow](./Materials/Event-Hub-to-ADE-workflow2.png)
 
 1. Using Event Hub and event-based Azure Function to achieve push mode (real-time view).
 
@@ -36,7 +41,14 @@ Azure Data Explorer (Kusto)
 
 4. Persist Docfx Application Insights Metrics data using Azure Data Factory (AI and Kusto data synchronization will be supported in the future).
 
-5. Power BI directly queries data from Kusto (real-time view but many features are limited).
+5. Power BI directly queries data from Kusto.
+    + Support real-time view
+    + Using kusto powerful query
+
+6. Power BI query.
+    + Demo reports
+    + The query is exposed to users
+    + Note that many features are limited in directly query mode
 
 ## Problems and Solutions
 
@@ -44,4 +56,4 @@ Azure Data Explorer (Kusto)
 Builder exposing API and Github API are minimized in the design.
 
 2. How to make up for past data?
-Github API can help to fetch previous configuration.
+Github API can help to fetch previous configurations.
