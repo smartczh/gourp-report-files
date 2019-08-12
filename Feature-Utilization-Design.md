@@ -24,11 +24,6 @@ Azure Data Explorer (Kusto)
 + Support Structured, Semi-Sturctured and Unstructured data (everything in one database)
 + Design for large volumes of logs and data OLAP from streaming sources(build-in support ingesting from Event Hub).
 
-### Settings
-
-+ Retention period
-+ Cache
-
 ## Current Workflow
 
 ![workflow](./Materials/Event-Hub-to-ADE-workflow2.png)
@@ -37,7 +32,9 @@ Azure Data Explorer (Kusto)
 
 2. Blob Storage can be used if the size of the content will exceed of the limit of event (1 MB). (error log, configuration)
 
-3. Azure Data Explorer update policy can be used to help better integrating with the needs of powerBI. (data filtered view, query speed, logical partition)
+3. Azure Data Explorer update policy can be used to：
+    + Exposing better view of data for users (if they need to read data directly from ADE)
+    + Better integrate with the needs of powerBI (query speed, logical process)
 
 4. Persist Docfx Application Insights Metrics data using Azure Data Factory (AI and Kusto data synchronization will be supported in the future).
 
@@ -48,7 +45,7 @@ Azure Data Explorer (Kusto)
 6. Power BI query.
     + Demo reports
     + The query is exposed to users
-    + Note that many features are limited in directly query mode
+    (Note that many features are limited in directly query mode)
 
 ## Problems and Solutions
 
