@@ -5,7 +5,7 @@
 ### Current and Target Source
 
 Data | Current | Target
-- | - | -
+--- | --- | ---
 Build raw data | Event Hub | Event Hub
 Warning/Error log | Blob | Simplified in Event Hub;<br> Or still Complete in Blob
 Build event configuration | None | Event Hub or Blob
