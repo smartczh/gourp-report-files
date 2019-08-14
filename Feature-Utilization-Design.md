@@ -33,8 +33,8 @@ Azure Data Explorer (Kusto)
 2. Blob Storage can be used if the size of the content will exceed of the limit of event (1 MB). (error log, configuration)
 
 3. Azure Data Explorer update policy can be used to：
-    + Exposing better view of data for users (if they need to read data directly from ADE)
-    + Better integrate with the needs of powerBI (query speed, logical process)
+    + Exposing better view (filtered) of data for users (if they need to read data directly from ADE)
+    + Better integrate with the needs of powerBI (query speed, logical process like array to rows and json to column)
 
 4. Persist Docfx Application Insights Metrics data using Azure Data Factory (AI and Kusto data synchronization will be supported in the future).
 
@@ -53,4 +53,12 @@ Azure Data Explorer (Kusto)
 Builder exposing API and Github API are minimized in the design.
 
 2. How to make up for past data?
-Github API can help to fetch previous configurations.
+    + Sync build raw data from OPSInsights cosmos DB
+    + Github API can help to fetch previous configurations
+
+## Things need to handle and coordinate
+
++ Event_type can be not in the header, then ADE build-in support ingest can be used.
++ Figure out a way to log config (dynamic type size limit 1MB)
++ Figure out a way to log error/warning
++ Add docset in event (now docset is in blob)
