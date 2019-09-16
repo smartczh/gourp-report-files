@@ -80,3 +80,13 @@ When the configuration is written in blob with blob url in buildjob event in fut
     + In web: you can click in the interested visual and modify Filters in the right board.
     + In Power BI Desktop (download in Microsoft APP Store): you can download the report file in web and open it in Power BI Desktop to edit. Then publish it to web.
     + In Power BI Desktop: you can create your own report by importing the data in Kusto as source.
+
+## Note
+
++ Permission: Kusto Database access, Azure function's key vault access
+
++ Setting: local environment and azure config
+
++ Data size limit: event, Kusto dynamic data type
+
++ BI query from Kusto: dynamic to data type, mv-expand
