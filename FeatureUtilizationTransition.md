@@ -4,7 +4,7 @@
 
 #### Repository
 
-https://ceapex.visualstudio.com/Engineering/_git/Docs.FeatureUtilization (working branch, details in readme file)
+https://ceapex.visualstudio.com/Engineering/_git/Docs.FeatureUtilization (**working** branch, details in readme file)
 
 #### Azure Resouces (PPE)
 
@@ -84,9 +84,14 @@ When the configuration is written in blob with blob url in buildjob event in fut
 ## Note
 
 + Permission: Kusto Database access, Azure function's key vault access
-
 + Setting: local environment and azure config
-
 + Data size limit: event, Kusto dynamic data type
-
 + BI query from Kusto: dynamic to data type, mv-expand
++ Power BI has many limitations under directly query mode (expand json data, time group etc., we can move complicated data process logic to import query or update policy).
+
+## Todo
+
++ Make up past data
++ Write configuration in blob and fetch it (Now using OPS Builder API)
++ Simplify error message
++ Test peak performance
