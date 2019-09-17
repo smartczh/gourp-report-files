@@ -48,10 +48,9 @@ Storage account|[featureutilization](https://login.microsoftonline.com/microsoft
 
 2. Databases
 
-+ featureUtilizaiton (sandbox data as source)
 + FeatureUtilizationProd (newest, production data as source)
 
-3. Tables (FeatureUtilizationProd)
+3. Tables
 
 + BuildJobRawData : raw data from buildjob Event Hub
 + BuildJobCompletedView : extracted data view from BuildJobRawData, storing completed buildjob data with publish config
