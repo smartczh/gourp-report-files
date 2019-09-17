@@ -4,7 +4,7 @@
 
 + ETL (extract-transform-load) and data integration at scale
 + Support complex hybrid data source
-+ Code free and easy, multiple configuration (json form)
++ Code free and easy, configuration directed (json form)
 + High modularity of functions and data flow view
 + Clear monitor of pipelines
 + ...
@@ -13,15 +13,15 @@
 
 ![ADF workflow](./Materials/ADF-workflow.png)
 
-1. Connect&Collect: multiple accessors
+1. Connect&Collect (multiple accessors predefined)
 2. Transform&Enrich: compute services such as HDInsight Hadoop, Spark, Data Lake Analytics, and Machine Learning, **supports custom codes** too
 3. Publish: deployment and act
 4. Monitor: built-in support, monitor via Azure Monitor, API, PowerShell, Azure Monitor logs, and health panels on the Azure portal.
 
 ## Basic concepts
 
-+ Linked services:
-  + Define the connection to the data source
++ Linked service
+  + Define the connection to the data source (type of data)
 
 ``` An azure data explorer linked service example
 {
@@ -41,8 +41,8 @@
 }
 ```
 
-+ Datasets:
-  + Represent data structures
++ Dataset
+  + Structures of data
   + Reference the data in the inputs or outputs of activities
 
 ``` An azure data explorer dataset example
@@ -81,14 +81,15 @@
 }
 ```
 
-+ Pipelines and activities:
-  + A logical grouping of activities that performs a unit of task
++ Activity and Pipeline
+  + Activity: a unit of task (ADF has predefined many modules)
+  + Pipeline: A logical grouping of activity
   + Custom control flow: sequence, branching, for-each, etc.
 
 ![pipeline-portal-view](./Materials/pipeline-portal-view.png)
 
 + Triggers: determines when a pipeline execution needs to be kicked off
-  + Manual run / Rest API
+  + Manual run in portal / Rest API
   + Schedule trigger
   + Tumbling window trigger
   + Event-based trigger
